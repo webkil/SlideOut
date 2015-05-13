@@ -15,6 +15,9 @@
 		17C4E01B198E444000E0B395 /* Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C4E01A198E444000E0B395 /* Menu.swift */; };
 		17C4E01F198E477C00E0B395 /* CenterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C4E01E198E477C00E0B395 /* CenterViewController.swift */; };
 		17C4E023198E504400E0B395 /* SidePanelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C4E022198E504400E0B395 /* SidePanelViewController.swift */; };
+		9AF016411B03D77F004F4671 /* SlideOutNavigation.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9AF0163F1B03D77F004F4671 /* SlideOutNavigation.xcdatamodeld */; };
+		9AF016431B03D808004F4671 /* NewMotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AF016421B03D808004F4671 /* NewMotoViewController.swift */; };
+		9AF016451B03D951004F4671 /* MotoEntities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AF016441B03D951004F4671 /* MotoEntities.swift */; };
 		FABE478F1AFE001C00879DF1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FABE478E1AFE001B00879DF1 /* Main.storyboard */; };
 		FAC0656A1AFD5AB00034984C /* honda_cb1000r.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FAC065691AFD5AB00034984C /* honda_cb1000r.jpg */; };
 		FAC0656C1AFD5AF30034984C /* piaggio_vespagt200.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FAC0656B1AFD5AF30034984C /* piaggio_vespagt200.jpg */; };
@@ -44,6 +47,10 @@
 		17C4E01A198E444000E0B395 /* Menu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = Menu.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		17C4E01E198E477C00E0B395 /* CenterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = CenterViewController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		17C4E022198E504400E0B395 /* SidePanelViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SidePanelViewController.swift; sourceTree = "<group>"; };
+		9A44DFDB1B03F4B800E96EA4 /* SlideOutNavigation.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = SlideOutNavigation.entitlements; sourceTree = "<group>"; };
+		9AF016401B03D77F004F4671 /* SlideOutNavigation.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SlideOutNavigation.xcdatamodel; sourceTree = "<group>"; };
+		9AF016421B03D808004F4671 /* NewMotoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewMotoViewController.swift; sourceTree = "<group>"; };
+		9AF016441B03D951004F4671 /* MotoEntities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MotoEntities.swift; path = ../MotoEntities.swift; sourceTree = "<group>"; };
 		FABE478E1AFE001B00879DF1 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		FAC065691AFD5AB00034984C /* honda_cb1000r.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = honda_cb1000r.jpg; sourceTree = "<group>"; };
 		FAC0656B1AFD5AF30034984C /* piaggio_vespagt200.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = piaggio_vespagt200.jpg; sourceTree = "<group>"; };
@@ -97,12 +104,16 @@
 		17C4DFCC198E428000E0B395 /* SlideOutNavigation */ = {
 			isa = PBXGroup;
 			children = (
+				9A44DFDB1B03F4B800E96EA4 /* SlideOutNavigation.entitlements */,
+				9AF016461B03D95B004F4671 /* DataBase */,
 				17BDB3511998A8860064476C /* Resources */,
 				17C4DFCF198E428000E0B395 /* AppDelegate.swift */,
 				17C4E01E198E477C00E0B395 /* CenterViewController.swift */,
 				178B5A5C198E7379006414ED /* ContainerViewController.swift */,
 				17C4E022198E504400E0B395 /* SidePanelViewController.swift */,
 				FABE478E1AFE001B00879DF1 /* Main.storyboard */,
+				9AF016421B03D808004F4671 /* NewMotoViewController.swift */,
+				9AF0163F1B03D77F004F4671 /* SlideOutNavigation.xcdatamodeld */,
 				17C4E01A198E444000E0B395 /* Menu.swift */,
 				179191C81A1D4F0D00072138 /* LaunchScreen.xib */,
 				17C4DFD6198E428000E0B395 /* Images.xcassets */,
@@ -134,6 +145,14 @@
 				17C4DFE1198E428000E0B395 /* Info.plist */,
 			);
 			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		9AF016461B03D95B004F4671 /* DataBase */ = {
+			isa = PBXGroup;
+			children = (
+				9AF016441B03D951004F4671 /* MotoEntities.swift */,
+			);
+			name = DataBase;
 			sourceTree = "<group>";
 		};
 		FAC065681AFD5AB00034984C /* Moto */ = {
@@ -195,6 +214,12 @@
 				TargetAttributes = {
 					17C4DFC9198E428000E0B395 = {
 						CreatedOnToolsVersion = 6.0;
+						DevelopmentTeam = FTTQZMR3W3;
+						SystemCapabilities = {
+							com.apple.iCloud = {
+								enabled = 1;
+							};
+						};
 					};
 					17C4DFDB198E428000E0B395 = {
 						CreatedOnToolsVersion = 6.0;
@@ -250,10 +275,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				17C4DFD0198E428000E0B395 /* AppDelegate.swift in Sources */,
+				9AF016451B03D951004F4671 /* MotoEntities.swift in Sources */,
 				17C4E01B198E444000E0B395 /* Menu.swift in Sources */,
 				178B5A5D198E7379006414ED /* ContainerViewController.swift in Sources */,
 				17C4E023198E504400E0B395 /* SidePanelViewController.swift in Sources */,
+				9AF016431B03D808004F4671 /* NewMotoViewController.swift in Sources */,
 				17C4E01F198E477C00E0B395 /* CenterViewController.swift in Sources */,
+				9AF016411B03D77F004F4671 /* SlideOutNavigation.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -358,9 +386,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_ENTITLEMENTS = SlideOutNavigation/SlideOutNavigation.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = "SlideOutNavigation/Supporting Files/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -369,9 +402,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_ENTITLEMENTS = SlideOutNavigation/SlideOutNavigation.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = "SlideOutNavigation/Supporting Files/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};
@@ -440,6 +478,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		9AF0163F1B03D77F004F4671 /* SlideOutNavigation.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				9AF016401B03D77F004F4671 /* SlideOutNavigation.xcdatamodel */,
+			);
+			currentVersion = 9AF016401B03D77F004F4671 /* SlideOutNavigation.xcdatamodel */;
+			path = SlideOutNavigation.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 17C4DFC2198E428000E0B395 /* Project object */;
 }
