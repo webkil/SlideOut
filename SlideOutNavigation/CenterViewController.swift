@@ -76,10 +76,21 @@ class CenterViewController: UIViewController {
    
   // MARK: Button menu actions
   
-  @IBAction func kittiesTapped(sender: AnyObject) {
+  @IBAction func BarreTapped(sender: AnyObject) {
     delegate?.toggleLeftPanel?()
   }
     
-
+    
   
+}
+
+
+extension CenterViewController: SidePanelViewControllerDelegate {
+    func menuSelected(menu: Menu) {
+        motoImage.image = menu.image
+        marqueLabel.text = menu.title
+        modelLabel.text = menu.creator
+        
+        delegate?.collapseSidePanels?()
+    }
 }
