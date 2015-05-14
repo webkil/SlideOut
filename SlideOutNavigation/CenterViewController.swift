@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 @objc
 protocol CenterViewControllerDelegate {
@@ -16,11 +17,62 @@ protocol CenterViewControllerDelegate {
 
 class CenterViewController: UIViewController {
   
-  @IBOutlet weak private var imageView: UIImageView!
-  @IBOutlet weak private var titleLabel: UILabel!
-  @IBOutlet weak private var creatorLabel: UILabel!
-  
+    @IBOutlet var marqueLabel: UILabel!
+    @IBOutlet var modelLabel: UILabel!
+    @IBOutlet var cylindreeLabel: UILabel!
+    @IBOutlet var kilometrageLabel: UILabel!
+    
+    @IBOutlet var anneeLabel: UILabel!
+    @IBOutlet var motoImage: UIImageView!
+    
   var delegate: CenterViewControllerDelegate?
+  
+  //champ pour nouvelle moto
+    var marque:String!
+    var modele: String!
+    var cylindree: String!
+    var kilometrage: String!
+    var annee: String!
+    
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+       
+        //Pour savoir si c'est le premier enregistrement dans la base
+        let managedObjectContext =
+        (UIApplication.sharedApplication().delegate
+            as! AppDelegate).managedObjectContext
+
+        
+        let fetchRequest = NSFetchRequest(entityName:"MotoEntities")
+        
+        var error: NSError?
+        
+        let fetchedResults =
+        managedObjectContext!.executeFetchRequest(fetchRequest,
+            error: &error) as? [NSManagedObject]
+        
+
+        if fetchedResults?.count == 0 {
+            let nv = self.storyboard!.instantiateViewControllerWithIdentifier("NewMotoView") as! NewMotoViewController
+            
+            self.navigationController!.pushViewController(nv, animated: true)
+
+        }
+         //terminé recherche du premier enregistrement
+        
+
+        
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
    
   // MARK: Button menu actions
   

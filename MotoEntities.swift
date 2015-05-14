@@ -22,6 +22,21 @@ class MotoEntities: NSManagedObject {
     
     // Construction d'une classe pour créer un objet dans la base de données
     
+    class func createInManagedObjectContext(moc: NSManagedObjectContext, marque: String, model: String, cylindree: String, annee: String, kilometrage: String, imagemoto: NSData) -> MotoEntities {
+        
+        let newmoto = NSEntityDescription.insertNewObjectForEntityForName("MotoEntities", inManagedObjectContext: moc) as! MotoEntities
+        
+        newmoto.marquemoto = marque
+        newmoto.modelmoto = model
+        newmoto.cylindreemoto = cylindree
+        newmoto.anneemoto = annee
+        newmoto.kilometragemoto = kilometrage
+        newmoto.imagemoto = imagemoto
+  
+       
+        return newmoto
+    }
+    
     class func createInManagedObjectContext(moc: NSManagedObjectContext, marque: String, model: String, cylindree: String, annee: String, kilometrage: String) -> MotoEntities {
         
         let newmoto = NSEntityDescription.insertNewObjectForEntityForName("MotoEntities", inManagedObjectContext: moc) as! MotoEntities
@@ -31,12 +46,12 @@ class MotoEntities: NSManagedObject {
         newmoto.cylindreemoto = cylindree
         newmoto.anneemoto = annee
         newmoto.kilometragemoto = kilometrage
-  
+    
+        
         
         return newmoto
     }
-    
-    
+
     
     
     

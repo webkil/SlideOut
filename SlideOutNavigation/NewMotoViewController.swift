@@ -29,18 +29,6 @@ class NewMotoViewController: UIViewController,UIImagePickerControllerDelegate, U
     (UIApplication.sharedApplication().delegate
         as! AppDelegate).managedObjectContext
     
-    
-   // let fetchRequest = NSFetchRequest(entityName: "MotoEntities")
-    
-  //  if let fetchResults = managedObjectContext!.executeFetchRequest(fetchRequest, error: nil) as? [MotoEntities]{
-        
-        //  nombre de resultats dans la base de donnees
-    //    println(fetchResults.count)
-        
-        // let alert = UIAlertController(title: fetchResults[0].nom, message: fetchResults[0].nom, preferredStyle: .Alert)
-        
-        //   self.presentViewController(alert, animated: true, completion: nil)}
-    
 
     
     
@@ -52,27 +40,28 @@ class NewMotoViewController: UIViewController,UIImagePickerControllerDelegate, U
         
         
          //Ajout en base de données des champs saisis
+         // On fera un traitement particulier si le gugus n'a pas mis d'image
+         // Pour l'instant j'utilise un autre constructeur sans l'image à sauver
+        if MotoImageView.image == nil {
         
-            
         MotoEntities.createInManagedObjectContext(moc!, marque: MarqueTextField.text,model: ModelTextField.text,
          cylindree: CylindréeTextField.text,
             annee: AnneeTextField.text, kilometrage: KilometrageTextField.text)
-
+        }
+        else {
+  
+            let MotoimageData:NSData = UIImagePNGRepresentation(MotoImageView.image)
+            MotoEntities.createInManagedObjectContext(moc!, marque: MarqueTextField.text,model: ModelTextField.text,
+                cylindree: CylindréeTextField.text,
+                annee: AnneeTextField.text, kilometrage: KilometrageTextField.text, imagemoto: MotoimageData)
+        
+        }
        
     }
 
 
     override func viewDidLoad() {
         super.viewDidLoad()
-      
-        //Remplir le champ avec une String
-        
-        MarqueTextField.text  = ""
-        ModelTextField.text = ""
-        CylindréeTextField.text = ""
-        KilometrageTextField.text = ""
-        AnneeTextField.text = ""
-        
 
         //pour le clique sur la photo
         let tapGestureRecognizer:UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "chooseImage:")
@@ -167,6 +156,22 @@ class NewMotoViewController: UIViewController,UIImagePickerControllerDelegate, U
     }
     
 
+    //Envoi de la nouvelle moto à la page principale
+    override func prepareForSegue(segmarque: UIStoryboardSegue, sender: AnyObject!) {
+        if (segmarque.identifier == "SegueNewMoto") {
+            var segmarque = segmarque.destinationViewController as! CenterViewController;
+      
+         segmarque.marque = MarqueTextField.text
+ 
+          
+            
+        }
+    }
+    
+    
+    
+    
+    
     
     
     /*
