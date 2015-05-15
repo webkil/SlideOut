@@ -18,7 +18,7 @@
 		9AF016411B03D77F004F4671 /* SlideOutNavigation.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9AF0163F1B03D77F004F4671 /* SlideOutNavigation.xcdatamodeld */; };
 		9AF016431B03D808004F4671 /* NewMotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AF016421B03D808004F4671 /* NewMotoViewController.swift */; };
 		9AF016451B03D951004F4671 /* MotoEntities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AF016441B03D951004F4671 /* MotoEntities.swift */; };
-		FABE478F1AFE001C00879DF1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FABE478E1AFE001B00879DF1 /* Main.storyboard */; };
+		FA065DF31B06424000FC199F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA065DF21B06424000FC199F /* Main.storyboard */; };
 		FAC0656A1AFD5AB00034984C /* honda_cb1000r.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FAC065691AFD5AB00034984C /* honda_cb1000r.jpg */; };
 		FAC0656C1AFD5AF30034984C /* piaggio_vespagt200.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FAC0656B1AFD5AF30034984C /* piaggio_vespagt200.jpg */; };
 		FAC0656E1AFD62A40034984C /* yamaha_r1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FAC0656D1AFD62A40034984C /* yamaha_r1.jpg */; };
@@ -51,7 +51,7 @@
 		9AF016401B03D77F004F4671 /* SlideOutNavigation.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SlideOutNavigation.xcdatamodel; sourceTree = "<group>"; };
 		9AF016421B03D808004F4671 /* NewMotoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewMotoViewController.swift; sourceTree = "<group>"; };
 		9AF016441B03D951004F4671 /* MotoEntities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MotoEntities.swift; path = ../MotoEntities.swift; sourceTree = "<group>"; };
-		FABE478E1AFE001B00879DF1 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		FA065DF21B06424000FC199F /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		FAC065691AFD5AB00034984C /* honda_cb1000r.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = honda_cb1000r.jpg; sourceTree = "<group>"; };
 		FAC0656B1AFD5AF30034984C /* piaggio_vespagt200.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = piaggio_vespagt200.jpg; sourceTree = "<group>"; };
 		FAC0656D1AFD62A40034984C /* yamaha_r1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = yamaha_r1.jpg; sourceTree = "<group>"; };
@@ -110,8 +110,8 @@
 				17C4DFCF198E428000E0B395 /* AppDelegate.swift */,
 				17C4E01E198E477C00E0B395 /* CenterViewController.swift */,
 				178B5A5C198E7379006414ED /* ContainerViewController.swift */,
+				FA065DF21B06424000FC199F /* Main.storyboard */,
 				17C4E022198E504400E0B395 /* SidePanelViewController.swift */,
-				FABE478E1AFE001B00879DF1 /* Main.storyboard */,
 				9AF016421B03D808004F4671 /* NewMotoViewController.swift */,
 				9AF0163F1B03D77F004F4671 /* SlideOutNavigation.xcdatamodeld */,
 				17C4E01A198E444000E0B395 /* Menu.swift */,
@@ -254,7 +254,7 @@
 				FAC0656C1AFD5AF30034984C /* piaggio_vespagt200.jpg in Resources */,
 				17C4DFD7198E428000E0B395 /* Images.xcassets in Resources */,
 				FAC0656A1AFD5AB00034984C /* honda_cb1000r.jpg in Resources */,
-				FABE478F1AFE001C00879DF1 /* Main.storyboard in Resources */,
+				FA065DF31B06424000FC199F /* Main.storyboard in Resources */,
 				FAC0656E1AFD62A40034984C /* yamaha_r1.jpg in Resources */,
 				179191C91A1D4F0D00072138 /* LaunchScreen.xib in Resources */,
 			);

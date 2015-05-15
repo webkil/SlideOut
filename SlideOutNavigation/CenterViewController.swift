@@ -38,6 +38,7 @@ class CenterViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
        
+        
         let motos = loadMoto()
         
         if motos.count == 0 {
@@ -98,7 +99,7 @@ extension CenterViewController: SidePanelViewControllerDelegate {
     func menuSelected(menu: Menu) {
         motoImage.image = menu.image
         marqueLabel.text = menu.title
-        modelLabel.text = menu.creator
+        modelLabel.text = menu.subtitle
         
         delegate?.collapseSidePanels?()
     }

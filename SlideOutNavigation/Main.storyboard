@@ -124,7 +124,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="302.25" y="429.375"/>
+            <point key="canvasLocation" x="1113.5" y="428.5"/>
         </scene>
         <!--Ajout Moto-->
         <scene sceneID="CKB-Xg-Wu7">
@@ -234,7 +234,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UcA-KU-GBN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1119.75" y="429.375"/>
+            <point key="canvasLocation" x="1789.5" y="428.5"/>
         </scene>
         <!--Left View Controller-->
         <scene sceneID="1ll-8V-Mdv">
@@ -245,9 +245,18 @@
                         <viewControllerLayoutGuide type="bottom" id="cfu-bu-gtL"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleAspectFit" id="92D-xz-mFb">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="64" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mbk-zl-LO8">
+                                <rect key="frame" x="65" y="593" width="80" height="30"/>
+                                <state key="normal" title="Paramètres">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="64" y="617" width="79" height="30"/>
+                                </variation>
+                            </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="64" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="QEm-P2-vPr">
                                 <rect key="frame" x="0.0" y="198" width="600" height="249"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -317,15 +326,6 @@
                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mbk-zl-LO8">
-                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
-                                <state key="normal" title="Paramètres">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="64" y="617" width="79" height="30"/>
-                                </variation>
-                            </button>
                             <imageView autoresizesSubviews="NO" clearsContextBeforeDrawing="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="CUt-VG-Zkr">
                                 <rect key="frame" x="53" y="34" width="100" height="100"/>
                                 <constraints>
@@ -345,19 +345,10 @@
                             <constraint firstAttribute="centerX" secondItem="CUt-VG-Zkr" secondAttribute="centerX" constant="85" id="eGX-t6-Fm8"/>
                             <constraint firstAttribute="centerY" secondItem="CUt-VG-Zkr" secondAttribute="centerY" constant="250" id="gVV-b8-Cnc"/>
                         </constraints>
-                        <variation key="default">
-                            <mask key="subviews">
-                                <exclude reference="Mbk-zl-LO8"/>
-                            </mask>
-                        </variation>
-                        <variation key="heightClass=regular-widthClass=compact">
-                            <mask key="subviews">
-                                <include reference="Mbk-zl-LO8"/>
-                            </mask>
-                        </variation>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
                     <toolbarItems/>
+                    <navigationItem key="navigationItem" id="WzL-JA-yu1"/>
                     <value key="contentSizeForViewInPopover" type="size" width="60" height="600"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
@@ -370,7 +361,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="J4t-sY-Xte" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-370.5" y="428.5"/>
+            <point key="canvasLocation" x="441.5" y="428.5"/>
         </scene>
     </scenes>
 </document>
