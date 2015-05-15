@@ -84,6 +84,7 @@ extension SidePanelViewController: UITableViewDelegate {
     profilImage.image = selectedMoto.image
     marqueProfilLabel.text = selectedMoto.title
     modelProfilLabel.text = selectedMoto.creator
+    
     delegate?.menuSelected(selectedMoto)
     
   }

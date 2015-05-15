@@ -25,9 +25,9 @@ class CenterViewController: UIViewController {
     @IBOutlet var anneeLabel: UILabel!
     @IBOutlet var motoImage: UIImageView!
     
-  var delegate: CenterViewControllerDelegate?
+    var delegate: CenterViewControllerDelegate?
   
-  //champ pour nouvelle moto
+  //champ pour afficher la moto sélectionnée
     var marque:String!
     var modele: String!
     var cylindree: String!
@@ -38,11 +38,32 @@ class CenterViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
        
-        //Pour savoir si c'est le premier enregistrement dans la base
+        let motos = loadMoto()
+        
+        if motos.count == 0 {
+            let nv = self.storyboard!.instantiateViewControllerWithIdentifier("NewMotoView") as! NewMotoViewController
+            self.navigationController!.pushViewController(nv, animated: true)
+        } else {
+        
+            var motoAffiche : MotoEntities  = motos[0] as! MotoEntities
+            marqueLabel.text = motoAffiche.marquemoto
+            modelLabel.text = motoAffiche.modelmoto
+            cylindreeLabel.text = motoAffiche.cylindreemoto
+            kilometrageLabel.text = motoAffiche.kilometragemoto
+            anneeLabel.text = motoAffiche.anneemoto
+        
+        }
+        
+        
+        
+    }
+    
+    
+    func loadMoto() -> [NSManagedObject] {
         let managedObjectContext =
         (UIApplication.sharedApplication().delegate
             as! AppDelegate).managedObjectContext
-
+        
         
         let fetchRequest = NSFetchRequest(entityName:"MotoEntities")
         
@@ -52,21 +73,9 @@ class CenterViewController: UIViewController {
         managedObjectContext!.executeFetchRequest(fetchRequest,
             error: &error) as? [NSManagedObject]
         
-
-        if fetchedResults?.count == 0 {
-            let nv = self.storyboard!.instantiateViewControllerWithIdentifier("NewMotoView") as! NewMotoViewController
-            
-            self.navigationController!.pushViewController(nv, animated: true)
-
-        }
-         //terminé recherche du premier enregistrement
-        
-
+        return fetchedResults!
         
     }
-    
-    
-    
     
     
     
