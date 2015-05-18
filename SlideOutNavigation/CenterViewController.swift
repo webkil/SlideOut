@@ -36,51 +36,24 @@ class CenterViewController: UIViewController {
     
     }
     
-    var delegate: CenterViewControllerDelegate?
+  var delegate: CenterViewControllerDelegate?
   
-  //champ pour afficher la moto sélectionnée
+  //champ pour nouvelle moto
     var marque:String!
     
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-<<<<<<< HEAD
        var motos = [MotoEntities].self
         
         
         
         //Pour savoir si c'est le premier enregistrement dans la base
-=======
-       
-        
-        let motos = loadMoto()
-        
-        if motos.count == 0 {
-            let nv = self.storyboard!.instantiateViewControllerWithIdentifier("NewMotoView") as! NewMotoViewController
-            self.navigationController!.pushViewController(nv, animated: true)
-        } else {
-        
-            var motoAffiche : MotoEntities  = motos[0] as! MotoEntities
-            marqueLabel.text = motoAffiche.marquemoto
-            modelLabel.text = motoAffiche.modelmoto
-            cylindreeLabel.text = motoAffiche.cylindreemoto
-            kilometrageLabel.text = motoAffiche.kilometragemoto
-            anneeLabel.text = motoAffiche.anneemoto
-        
-        }
-        
-        
-        
-    }
-    
-    
-    func loadMoto() -> [NSManagedObject] {
->>>>>>> origin/master
         let managedObjectContext =
         (UIApplication.sharedApplication().delegate
             as! AppDelegate).managedObjectContext
-        
+
         
         let fetchRequest = NSFetchRequest(entityName:"MotoEntities")
         
@@ -91,7 +64,6 @@ class CenterViewController: UIViewController {
         managedObjectContext!.executeFetchRequest(fetchRequest,
             error: &error) as? [MotoEntities]
         
-<<<<<<< HEAD
 
         if fetchedResults?.count == 0 {
             let nv = self.storyboard!.instantiateViewControllerWithIdentifier("NewMotoView") as! NewMotoViewController
@@ -104,11 +76,11 @@ class CenterViewController: UIViewController {
          //terminé recherche du premier enregistrement
         println(fetchedResults?.count)
 
-=======
-        return fetchedResults!
->>>>>>> origin/master
         
     }
+    
+    
+    
     
     
     
@@ -132,7 +104,7 @@ extension CenterViewController: SidePanelViewControllerDelegate {
     func menuSelected(menu: Menu) {
         motoImage.image = menu.image
         marqueLabel.text = menu.title
-        modelLabel.text = menu.subtitle
+        modelLabel.text = menu.creator
         
         delegate?.collapseSidePanels?()
     }

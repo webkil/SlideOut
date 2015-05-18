@@ -23,8 +23,7 @@ class SidePanelViewController: UIViewController {
     var delegate: SidePanelViewControllerDelegate?
   
     var menus: Array<Menu>!
-
-    
+  
   struct TableView {
     struct CellIdentifiers {
       static let MenuCell = "MenuCell"
@@ -34,9 +33,7 @@ class SidePanelViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     
-    
     tableView.reloadData()
-    
     let indexPath = NSIndexPath(forRow: 0, inSection: 0)
     tableView.selectRowAtIndexPath(indexPath , animated: true,  scrollPosition: UITableViewScrollPosition.None)
     
@@ -44,7 +41,7 @@ class SidePanelViewController: UIViewController {
     
     profilImage.image = selectedDefaultMoto.image
     marqueProfilLabel.text = selectedDefaultMoto.title
-    modelProfilLabel.text = selectedDefaultMoto.subtitle
+    modelProfilLabel.text = selectedDefaultMoto.creator
     
     profilImage.layer.masksToBounds = true
     profilImage.layer.borderColor = UIColor.whiteColor().CGColor
@@ -54,7 +51,6 @@ class SidePanelViewController: UIViewController {
     profilImage.frame.origin.x = 20
     
   }
-    
   
 }
 
@@ -87,8 +83,7 @@ extension SidePanelViewController: UITableViewDelegate {
     let selectedMoto = menus[indexPath.row]
     profilImage.image = selectedMoto.image
     marqueProfilLabel.text = selectedMoto.title
-    modelProfilLabel.text = selectedMoto.subtitle
-    
+    modelProfilLabel.text = selectedMoto.creator
     delegate?.menuSelected(selectedMoto)
     
   }
@@ -105,7 +100,7 @@ class MenuCell: UITableViewCell {
     func configureForMenu(menu: Menu) {
     imageMotoView.image = menu.image
     marqueMotoLabel.text = menu.title
-    modeleMotoLabel.text = menu.subtitle
+    modeleMotoLabel.text = menu.creator
       
     imageMotoView.layer.cornerRadius = imageMotoView.layer.frame.size.width/2
     imageMotoView.layer.masksToBounds = true
