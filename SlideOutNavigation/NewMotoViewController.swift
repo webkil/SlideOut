@@ -60,6 +60,8 @@ class NewMotoViewController: UIViewController,UIImagePickerControllerDelegate, U
             moc?.save(nil)
         
         }
+        
+       moc!.save(nil)
        
     }
 
@@ -165,7 +167,7 @@ class NewMotoViewController: UIViewController,UIImagePickerControllerDelegate, U
         if (segmarque.identifier == "SegueNewMoto") {
             var segmarque = segmarque.destinationViewController as! CenterViewController;
       
-         segmarque.marque = MarqueTextField.text
+//         segmarque.marque = MarqueTextField.text
  
           
             
