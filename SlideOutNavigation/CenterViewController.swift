@@ -24,20 +24,31 @@ class CenterViewController: UIViewController {
     
     @IBOutlet var anneeLabel: UILabel!
     @IBOutlet var motoImage: UIImageView!
+    @IBAction func fetchbutton(sender: AnyObject) {
+        
+         let fetchRequest = NSFetchRequest(entityName: "MotoEntities")
+    
+    
+    
+    
+    
+    
+    
+    }
     
   var delegate: CenterViewControllerDelegate?
   
   //champ pour nouvelle moto
     var marque:String!
-    var modele: String!
-    var cylindree: String!
-    var kilometrage: String!
-    var annee: String!
+    
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-       
+       var motos = [MotoEntities].self
+        
+        
+        
         //Pour savoir si c'est le premier enregistrement dans la base
         let managedObjectContext =
         (UIApplication.sharedApplication().delegate
@@ -46,21 +57,24 @@ class CenterViewController: UIViewController {
         
         let fetchRequest = NSFetchRequest(entityName:"MotoEntities")
         
+        
         var error: NSError?
         
         let fetchedResults =
         managedObjectContext!.executeFetchRequest(fetchRequest,
-            error: &error) as? [NSManagedObject]
+            error: &error) as? [MotoEntities]
         
 
         if fetchedResults?.count == 0 {
             let nv = self.storyboard!.instantiateViewControllerWithIdentifier("NewMotoView") as! NewMotoViewController
             
             self.navigationController!.pushViewController(nv, animated: true)
-
+ 
+            
+            
         }
          //terminé recherche du premier enregistrement
-        
+        println(fetchedResults?.count)
 
         
     }
@@ -78,6 +92,7 @@ class CenterViewController: UIViewController {
   
   @IBAction func BarreTapped(sender: AnyObject) {
     delegate?.toggleLeftPanel?()
+    println("ici")
   }
     
     

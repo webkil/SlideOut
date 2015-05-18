@@ -35,6 +35,8 @@ class MotoEntities: NSManagedObject {
   
        
         return newmoto
+    
+        
     }
     
     class func createInManagedObjectContext(moc: NSManagedObjectContext, marque: String, model: String, cylindree: String, annee: String, kilometrage: String) -> MotoEntities {
@@ -50,6 +52,8 @@ class MotoEntities: NSManagedObject {
         
         
         return newmoto
+        
+        
     }
 
     

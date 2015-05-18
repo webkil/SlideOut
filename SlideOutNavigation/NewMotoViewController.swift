@@ -47,6 +47,8 @@ class NewMotoViewController: UIViewController,UIImagePickerControllerDelegate, U
         MotoEntities.createInManagedObjectContext(moc!, marque: MarqueTextField.text,model: ModelTextField.text,
          cylindree: CylindréeTextField.text,
             annee: AnneeTextField.text, kilometrage: KilometrageTextField.text)
+            
+            moc?.save(nil)
         }
         else {
   
@@ -54,6 +56,8 @@ class NewMotoViewController: UIViewController,UIImagePickerControllerDelegate, U
             MotoEntities.createInManagedObjectContext(moc!, marque: MarqueTextField.text,model: ModelTextField.text,
                 cylindree: CylindréeTextField.text,
                 annee: AnneeTextField.text, kilometrage: KilometrageTextField.text, imagemoto: MotoimageData)
+            
+            moc?.save(nil)
         
         }
        
@@ -156,7 +160,7 @@ class NewMotoViewController: UIViewController,UIImagePickerControllerDelegate, U
     }
     
 
-    //Envoi de la nouvelle moto à la page principale
+    //Envoi de la nouvelle moto à la page principale via un objet segue
     override func prepareForSegue(segmarque: UIStoryboardSegue, sender: AnyObject!) {
         if (segmarque.identifier == "SegueNewMoto") {
             var segmarque = segmarque.destinationViewController as! CenterViewController;
