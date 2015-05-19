@@ -17,12 +17,15 @@ class MotoEntities: NSManagedObject {
     @NSManaged var anneemoto: String
     @NSManaged var kilometragemoto: String
     @NSManaged var imagemoto: NSData
+    @NSManaged var nombre: Int16
+
+   
     
     
     
     // Construction d'une classe pour créer un objet dans la base de données
     
-    class func createInManagedObjectContext(moc: NSManagedObjectContext, marque: String, model: String, cylindree: String, annee: String, kilometrage: String, imagemoto: NSData) -> MotoEntities {
+    class func createInManagedObjectContext(moc: NSManagedObjectContext, marque: String, model: String, cylindree: String, annee: String, kilometrage: String, imagemoto: NSData, nombre: Int16) -> MotoEntities {
         
         let newmoto = NSEntityDescription.insertNewObjectForEntityForName("MotoEntities", inManagedObjectContext: moc) as! MotoEntities
         
@@ -32,14 +35,14 @@ class MotoEntities: NSManagedObject {
         newmoto.anneemoto = annee
         newmoto.kilometragemoto = kilometrage
         newmoto.imagemoto = imagemoto
-  
-       
+        newmoto.nombre = nombre
+
         return newmoto
     
         
     }
     
-    class func createInManagedObjectContext(moc: NSManagedObjectContext, marque: String, model: String, cylindree: String, annee: String, kilometrage: String) -> MotoEntities {
+    class func createInManagedObjectContext(moc: NSManagedObjectContext, marque: String, model: String, cylindree: String, annee: String, kilometrage: String, nombre: Int16) -> MotoEntities {
         
         let newmoto = NSEntityDescription.insertNewObjectForEntityForName("MotoEntities", inManagedObjectContext: moc) as! MotoEntities
         
@@ -48,7 +51,7 @@ class MotoEntities: NSManagedObject {
         newmoto.cylindreemoto = cylindree
         newmoto.anneemoto = annee
         newmoto.kilometragemoto = kilometrage
-    
+        newmoto.nombre = nombre
         
         
         return newmoto

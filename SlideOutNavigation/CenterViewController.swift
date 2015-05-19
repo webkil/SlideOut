@@ -2,8 +2,8 @@
 //  CenterViewController.swift
 //  SlideOutNavigation
 //
-//  Created by James Frost on 03/08/2014.
-//  Copyright (c) 2014 James Frost. All rights reserved.
+//  Created by David on 03/08/2014.
+//  Copyright (c) 2014 David. All rights reserved.
 //
 
 import UIKit
@@ -17,35 +17,114 @@ protocol CenterViewControllerDelegate {
 
 class CenterViewController: UIViewController {
   
+    @IBOutlet var searchTextField: UITextField!
     @IBOutlet var marqueLabel: UILabel!
     @IBOutlet var modelLabel: UILabel!
     @IBOutlet var cylindreeLabel: UILabel!
     @IBOutlet var kilometrageLabel: UILabel!
+    @IBOutlet var retourinfoLabel: UILabel!
+    @IBOutlet var numberLabel: UILabel!
     
     @IBOutlet var anneeLabel: UILabel!
     @IBOutlet var motoImage: UIImageView!
-    @IBAction func fetchbutton(sender: AnyObject) {
+ 
+    var nombre1:Int16 = 0
+    
+ 
+    
+    
+    @IBAction func cleanButton(sender: AnyObject) {
+        //Nettoyer la base de données
+      
+        let appDel:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         
-         let fetchRequest = NSFetchRequest(entityName: "MotoEntities")
+        let contextmoto:NSManagedObjectContext = appDel.managedObjectContext!
+        
+            let modelURL = NSBundle.mainBundle().URLForResource("SlideOutNavigation", withExtension: "momd")
+        
+            let mom = NSManagedObjectModel(contentsOfURL: modelURL!)
+            
+            for entityName in mom!.entitiesByName.keys {
+                let fr = NSFetchRequest(entityName: "MotoEntities")
+                var results: NSArray = contextmoto.executeFetchRequest(fr, error: nil)!
+
+                for mo in results {
+                    contextmoto.deleteObject(mo as! NSManagedObject)
+                }
+            }
+            
+            contextmoto.save(nil)
+            retourinfoLabel.text = "Base nettoyée!"
+            modelLabel.text = ""
+            marqueLabel.text = ""
+            cylindreeLabel.text = ""
+            kilometrageLabel.text = ""
+            anneeLabel.text = ""
+
+        
+           }
     
     
-    
-    
-    
-    
-    
+    @IBAction func fetchbutton(sender: AnyObject) {
+
+        
+        //Pour rechercher une moto précise
+        
+        let appDel:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let contextmoto:NSManagedObjectContext = appDel.managedObjectContext!
+        
+        let request = NSFetchRequest(entityName: "MotoEntities")
+        
+        request.returnsObjectsAsFaults = false;
+       
+        
+
+        //Recherche par Nom
+        request.predicate = NSPredicate(format: "marquemoto = %@", searchTextField.text)
+        
+      
+        var results: NSArray = contextmoto.executeFetchRequest(request, error: nil)!
+       
+        //pour une boucle lorsqu'on a plusieurs résultats
+        // for resultat in results {
+        
+        if results.count == 1  {
+
+            var motoItem = results[0] as! MotoEntities
+                modelLabel.text = motoItem.modelmoto
+                marqueLabel.text = motoItem.marquemoto
+                cylindreeLabel.text = motoItem.cylindreemoto
+                kilometrageLabel.text = motoItem.kilometragemoto
+                anneeLabel.text = motoItem.anneemoto
+            
+            //convertir int to String
+            let nombretostring : Int16 = motoItem.nombre
+            var myString = String(nombretostring)
+            numberLabel.text = myString
+            
+            //remettre à vide l'info texte
+                retourinfoLabel.text = ""
+            
+            retourinfoLabel.text = "Trouvé \(results.count) résultat(s) avec la recherche. "
+            
+        }
+            
+        else    {
+      
+            
+            retourinfoLabel.text = "Trouvé \(results.count) résultat(s) avec la recherche. "
+                }
+       
+      //  }
+        
     }
     
   var delegate: CenterViewControllerDelegate?
   
-  //champ pour nouvelle moto
-    var marque:String!
-    
-    
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-       var motos = [MotoEntities].self
+        var motos = [MotoEntities].self
         
         
         
@@ -54,37 +133,67 @@ class CenterViewController: UIViewController {
         (UIApplication.sharedApplication().delegate
             as! AppDelegate).managedObjectContext
 
-        
         let fetchRequest = NSFetchRequest(entityName:"MotoEntities")
-        
-        
+ 
         var error: NSError?
         
         let fetchedResults =
         managedObjectContext!.executeFetchRequest(fetchRequest,
-            error: &error) as? [MotoEntities]
+            error: &error) as? [NSManagedObject]
         
 
         if fetchedResults?.count == 0 {
             let nv = self.storyboard!.instantiateViewControllerWithIdentifier("NewMotoView") as! NewMotoViewController
             
             self.navigationController!.pushViewController(nv, animated: true)
- 
-            
-            
+       
+
         }
+        
+        if nombre1 > 0 {
+
+            
+            let appDel:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+            let contextmoto:NSManagedObjectContext = appDel.managedObjectContext!
+            
+            let request = NSFetchRequest(entityName: "MotoEntities")
+            
+            request.returnsObjectsAsFaults = false;
+            
+            
+            request.predicate = NSPredicate(format: "nombre = %d", nombre1)
+
+            var results: NSArray = contextmoto.executeFetchRequest(request, error: nil)!
+
+            
+                var motoItem = results[0] as! MotoEntities
+                modelLabel.text = motoItem.modelmoto
+                marqueLabel.text = motoItem.marquemoto
+                cylindreeLabel.text = motoItem.cylindreemoto
+                kilometrageLabel.text = motoItem.kilometragemoto
+                anneeLabel.text = motoItem.anneemoto
+                
+                //convertir int to String
+                let nombretostring : Int16 = motoItem.nombre
+                var myString = String(nombretostring)
+                numberLabel.text = myString
+                
+                //remettre à vide l'info texte
+                retourinfoLabel.text = ""
+                
+                retourinfoLabel.text = "Trouvé \(results.count) résultat(s) avec la recherche. "
+
+        
+        }
+        
+        
          //terminé recherche du premier enregistrement
         println(fetchedResults?.count)
 
         
     }
     
-    
-    
-    
-    
-    
-    
+
     
     
    
@@ -92,7 +201,7 @@ class CenterViewController: UIViewController {
   
   @IBAction func BarreTapped(sender: AnyObject) {
     delegate?.toggleLeftPanel?()
-    println("ici")
+   
   }
     
     

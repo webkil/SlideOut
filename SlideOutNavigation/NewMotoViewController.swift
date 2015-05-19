@@ -21,6 +21,10 @@ class NewMotoViewController: UIViewController,UIImagePickerControllerDelegate, U
     
     var imagechangee = false
     
+    //numero a transmettre
+    var numerosegue:Int16 = 0
+  
+    
     
     
     //Declaration du MARK: managedObjectContext
@@ -34,7 +38,17 @@ class NewMotoViewController: UIViewController,UIImagePickerControllerDelegate, U
     
     @IBAction func SaveAction(sender: AnyObject){
         
-    
+        //compter le nombre de motos en base de données
+        let appDel:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let contextmoto:NSManagedObjectContext = appDel.managedObjectContext!
+        
+        let request = NSFetchRequest(entityName: "MotoEntities")
+        request.returnsObjectsAsFaults = false;
+        var results: NSArray = contextmoto.executeFetchRequest(request, error: nil)!
+       
+        var comptage = results.count + 1 as Int16
+        numerosegue = comptage
+        
         //Declaration du moc
         let moc = self.managedObjectContext
         
@@ -43,19 +57,21 @@ class NewMotoViewController: UIViewController,UIImagePickerControllerDelegate, U
          // On fera un traitement particulier si le gugus n'a pas mis d'image
          // Pour l'instant j'utilise un autre constructeur sans l'image à sauver
         if MotoImageView.image == nil {
-        
-        MotoEntities.createInManagedObjectContext(moc!, marque: MarqueTextField.text,model: ModelTextField.text,
-         cylindree: CylindréeTextField.text,
-            annee: AnneeTextField.text, kilometrage: KilometrageTextField.text)
             
-            moc?.save(nil)
+            MotoEntities.createInManagedObjectContext(moc!, marque: MarqueTextField.text,model: ModelTextField.text,
+                cylindree: CylindréeTextField.text,
+                annee: AnneeTextField.text, kilometrage: KilometrageTextField.text, nombre: comptage)
+            
+                 moc?.save(nil)
+            
         }
         else {
   
             let MotoimageData:NSData = UIImagePNGRepresentation(MotoImageView.image)
+            
             MotoEntities.createInManagedObjectContext(moc!, marque: MarqueTextField.text,model: ModelTextField.text,
                 cylindree: CylindréeTextField.text,
-                annee: AnneeTextField.text, kilometrage: KilometrageTextField.text, imagemoto: MotoimageData)
+                annee: AnneeTextField.text, kilometrage: KilometrageTextField.text, imagemoto: MotoimageData, nombre: comptage)
             
             moc?.save(nil)
         
@@ -159,33 +175,20 @@ class NewMotoViewController: UIViewController,UIImagePickerControllerDelegate, U
         // Dispose of any resources that can be recreated.
     }
     
-
+    
+// MARK: - Navigation Segue
+    
     //Envoi de la nouvelle moto à la page principale via un objet segue
-    override func prepareForSegue(segmarque: UIStoryboardSegue, sender: AnyObject!) {
-        if (segmarque.identifier == "SegueNewMoto") {
-            var segmarque = segmarque.destinationViewController as! CenterViewController;
+    override func prepareForSegue(segnumber: UIStoryboardSegue, sender: AnyObject!) {
+        if (segnumber.identifier == "SegueNewMoto") {
+            var segnumber = segnumber.destinationViewController as! CenterViewController;
       
-         segmarque.marque = MarqueTextField.text
- 
-          
+            //Passer le numéro de la moto dans le CenterviewController
+            
+    segnumber.nombre1 = numerosegue
             
         }
     }
     
-    
-    
-    
-    
-    
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+  
 }
