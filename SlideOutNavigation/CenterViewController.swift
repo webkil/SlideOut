@@ -39,7 +39,7 @@ class CenterViewController: UIViewController {
         super.viewDidLoad()
        
         
-        let motos = loadMoto()
+        let motos  = loadMoto() as [NSManagedObject]
         
         if motos.count == 0 {
             let nv = self.storyboard!.instantiateViewControllerWithIdentifier("NewMotoView") as! NewMotoViewController
@@ -96,11 +96,12 @@ class CenterViewController: UIViewController {
 
 
 extension CenterViewController: SidePanelViewControllerDelegate {
-    func menuSelected(menu: Menu) {
-        motoImage.image = menu.image
-        marqueLabel.text = menu.title
-        modelLabel.text = menu.subtitle
+    func menuSelected(motos: MotoEntities) {
+        motoImage.image = motos.imagemoto as! UIImage
+        marqueLabel.text = motos.marquemoto
+        modelLabel.text = motos.modelmoto
         
         delegate?.collapseSidePanels?()
     }
+    
 }
