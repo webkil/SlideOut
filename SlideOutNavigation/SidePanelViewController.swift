@@ -23,8 +23,13 @@ class SidePanelViewController: UIViewController {
     
     var delegate: SidePanelViewControllerDelegate?
   
+<<<<<<< HEAD
     let motos:[NSManagedObject] = []
     
+=======
+    var menus: Array<Menu>!
+  
+>>>>>>> origin/master
   struct TableView {
     struct CellIdentifiers {
       static let MenuCell = "MenuCell"
@@ -34,18 +39,30 @@ class SidePanelViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     
+<<<<<<< HEAD
     let motos = loadMoto() as[NSManagedObject]
     
     tableView.reloadData()
     
     let indexPathDefault = NSIndexPath(forRow: 0, inSection: 0)
     tableView.selectRowAtIndexPath(indexPathDefault , animated: true,  scrollPosition: UITableViewScrollPosition.None)
+=======
+    tableView.reloadData()
+    let indexPath = NSIndexPath(forRow: 0, inSection: 0)
+    tableView.selectRowAtIndexPath(indexPath , animated: true,  scrollPosition: UITableViewScrollPosition.None)
+>>>>>>> origin/master
     
     let selectedDefaultMoto : MotoEntities = motos[0] as! MotoEntities
     
+<<<<<<< HEAD
     profilImage.image = selectedDefaultMoto.imagemoto as! UIImage
     marqueProfilLabel.text = selectedDefaultMoto.marquemoto
     modelProfilLabel.text = selectedDefaultMoto.modelmoto
+=======
+    profilImage.image = selectedDefaultMoto.image
+    marqueProfilLabel.text = selectedDefaultMoto.title
+    modelProfilLabel.text = selectedDefaultMoto.creator
+>>>>>>> origin/master
     
     profilImage.layer.masksToBounds = true
     profilImage.layer.borderColor = UIColor.whiteColor().CGColor
@@ -55,6 +72,7 @@ class SidePanelViewController: UIViewController {
     profilImage.frame.origin.x = 20
     
   }
+<<<<<<< HEAD
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
@@ -88,6 +106,8 @@ class SidePanelViewController: UIViewController {
     
 }
 
+=======
+>>>>>>> origin/master
   
 }
 
@@ -106,12 +126,19 @@ extension SidePanelViewController: UITableViewDelegate {
 
   func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
     
+<<<<<<< HEAD
     let selectedMoto:MotoEntities = motos[indexPath.row] as! MotoEntities
     //profilImage.image = selectedMoto.imagemoto as! UIImage
 
     marqueProfilLabel.text = selectedMoto.marquemoto
     modelProfilLabel.text = selectedMoto.modelmoto
     
+=======
+    let selectedMoto = menus[indexPath.row]
+    profilImage.image = selectedMoto.image
+    marqueProfilLabel.text = selectedMoto.title
+    modelProfilLabel.text = selectedMoto.creator
+>>>>>>> origin/master
     delegate?.menuSelected(selectedMoto)
     
   }
@@ -125,10 +152,17 @@ class MenuCell: UITableViewCell {
   @IBOutlet var modeleMotoLabel: UILabel!
   
     
+<<<<<<< HEAD
     func configureForMenu(test: MotoEntities) {
     imageMotoView.image = test.imagemoto as! UIImage
     marqueMotoLabel.text = test.marquemoto
     modeleMotoLabel.text = test.modelmoto
+=======
+    func configureForMenu(menu: Menu) {
+    imageMotoView.image = menu.image
+    marqueMotoLabel.text = menu.title
+    modeleMotoLabel.text = menu.creator
+>>>>>>> origin/master
       
 //    imageMotoView.layer.cornerRadius = imageMotoView.layer.frame.size.width/2
 //    imageMotoView.layer.masksToBounds = true
